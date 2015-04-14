@@ -1,35 +1,45 @@
 #!/bin/bash
+
+# If the script is being executed as a non-root user, become root with sudo
+if [ $UID != 0 ]
+then
+  # The script itself is executed again with sudo
+  # sudo is called with exec so current script execution is replaced by
+  # the one executed with sudo
+  exec sudo $0
+fi
+
 clear
 
 
 tempdir=$(mktemp -d)
 
-sudo apt-get update
-sudo apt-get upgrade -y
-sudo apt-get install ubuntu-restricted-extras gnome-icon-theme-full -y
+apt-get update
+apt-get upgrade -y
+apt-get install ubuntu-restricted-extras gnome-icon-theme-full -y
 
-sudo add-apt-repository ppa:yorba/ppa -y 
-sudo apt-get sudo add-apt-repository ppa:smathot/cogscinl -y 
-sudo add-apt-repository ppa:gottcode/gcppa -y 
-sudo add-apt-repository ppa:webupd8team/sublime-text-2 -y 
-sudo apt-get update
+add-apt-repository ppa:yorba/ppa -y 
+add-apt-repository ppa:smathot/cogscinl -y 
+add-apt-repository ppa:gottcode/gcppa -y 
+add-apt-repository ppa:webupd8team/sublime-text-2 -y 
+apt-get update
 
-sudo apt-get install mendeleydesktop shotwell ubuntu-restricted-extras -y 
-sudo apt-get update -y 
-sudo apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y 
-sudo apt-get -y build-dep libcurl4-gnutls-dev
-sudo apt-get -y install libcurl4-gnutls-dev
-
-
+apt-get install mendeleydesktop shotwell ubuntu-restricted-extras -y 
+apt-get update -y 
+apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y 
+apt-get -y build-dep libcurl4-gnutls-dev
+apt-get -y install libcurl4-gnutls-dev
 
 
 
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 -y
 
-sudo echo "deb http://cran.r-project.org/bin/linux/ubuntu trusty/" >>  /etc/apt/sources.list
-sudo apt-get update
-sudo apt-get install r-base
+
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 -y
+
+echo "deb http://cran.r-project.org/bin/linux/ubuntu trusty/" >>  /etc/apt/sources.list
+apt-get update
+apt-get install r-base
 
 
 cat << EOF > $tempdir/sc.R
@@ -51,10 +61,10 @@ R CMD BATCH $tempdir/sc.R
 
 wget -P $tempdir http://download1.rstudio.org/rstudio-0.98.1103-amd64.deb
 
-sudo dpkg -i $tempdir/rstudio-0.98.1103-amd64.deb
+dpkg -i $tempdir/rstudio-0.98.1103-amd64.deb
 rm -fr $tempdir
 
 
 
 
-sudo apt-get upgrade
+apt-get upgrade
