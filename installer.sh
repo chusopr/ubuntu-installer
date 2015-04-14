@@ -6,8 +6,7 @@ tempdir=$(mktemp -d)
 
 sudo apt-get update
 sudo apt-get upgrade -y
-sudo apt-get install ubuntu-restricted-extras -y
-sudo apt-get install gnome-icon-theme-full -y
+sudo apt-get install ubuntu-restricted-extras gnome-icon-theme-full -y
 
 sudo add-apt-repository ppa:yorba/ppa -y 
 sudo apt-get sudo add-apt-repository ppa:smathot/cogscinl -y 
@@ -15,18 +14,9 @@ sudo add-apt-repository ppa:gottcode/gcppa -y
 sudo add-apt-repository ppa:webupd8team/sublime-text-2 -y 
 sudo apt-get update
 
-sudo apt-get install mendeleydesktop -y
-sudo apt-get install shotwell -y 
-sudo apt-get install ubuntu-restricted-extras -y 
+sudo apt-get install mendeleydesktop shotwell ubuntu-restricted-extras -y 
 sudo apt-get update -y 
-sudo apt-get install sublime-text -y 
-sudo apt-get install focuswriter -y 
-sudo apt-get install opensesame -y 
-sudo apt-get install vlc -y
-sudo apt-get -y install libreoffice
-apt-get -y install firefox
-
-sudo apt-get install texlive -y 
+sudo apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y 
 sudo apt-get -y build-dep libcurl4-gnutls-dev
 sudo apt-get -y install libcurl4-gnutls-dev
 
