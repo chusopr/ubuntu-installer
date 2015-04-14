@@ -14,31 +14,33 @@ clear
 
 tempdir=$(mktemp -d)
 
-apt-get update
-apt-get upgrade -y
-apt-get install ubuntu-restricted-extras gnome-icon-theme-full -y
+
+apt-get install ttf-mscorefonts-installer -y 
+apt-get install ubuntu-restricted-addons -y 
+apt-get install gstreamer0.10-plugins-bad-multiverse -y 
+apt-get install libavcodec-extra-53 -y 
+apt-get install unrar gnome-icon-theme-full -y
 
 add-apt-repository ppa:yorba/ppa -y 
 add-apt-repository ppa:smathot/cogscinl -y 
 add-apt-repository ppa:gottcode/gcppa -y 
 add-apt-repository ppa:webupd8team/sublime-text-2 -y 
-apt-get update
+echo "Updating"
+apt-get update &> /dev/null
 
-apt-get install mendeleydesktop shotwell ubuntu-restricted-extras -y 
-apt-get update -y 
-apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y 
+apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y || echo "Writers and Firefox not installed"
 apt-get -y build-dep libcurl4-gnutls-dev
 apt-get -y install libcurl4-gnutls-dev
 
 
 
-
-
+apt-get upgrade && echo "Actualización correcta" || echo "Actualización fallida"
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 -y
 
 echo "deb http://cran.r-project.org/bin/linux/ubuntu trusty/" >>  /etc/apt/sources.list
-apt-get update
+echo "updating"
+apt-get update &> /dev/null
 apt-get install r-base
 
 
@@ -67,4 +69,4 @@ rm -fr $tempdir
 
 
 
-apt-get upgrade
+apt-get upgrade || echo "Upgrade failed" && echo "Upgrade OK"
