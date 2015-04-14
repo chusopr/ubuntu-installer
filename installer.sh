@@ -47,11 +47,14 @@ apt-get install r-base
 cat << EOF > $tempdir/sc.R
 	pack <- c("dlm","parallel" ,"languageR","boot","arm" ,"effects","doBy","Hmisc","RLRsim","influence.ME","pbkrtest","GPArotation", "lmerTest", "ggplot2", "dplyr", "reshape2", "plyr", "xtable", "psych", "car", "foreign", "gdata", "catR", "knitr", "psychometric", "gmodels", "lme4","AICcmodavg" )
 
+
+
 	req <- function(pack){
  		 not.installed <- !pack %in% installed.packages()
 		  for.install <- pack[not.installed]
-		  lapply(for.install, install.packages)
-		  lapply(pack, require, character.only=T)
+		  install.packages_2 <- function(arg){ install.packages(arg, repos="http://cran.rstudio.com/") }
+		  lapply(for.install, install.packages_2)
+
 			  }
 		req(pack)
 EOF
