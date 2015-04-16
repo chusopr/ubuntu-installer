@@ -36,7 +36,7 @@ apt-get -y install libcurl4-gnutls-dev
 
 apt-get upgrade && echo "Actualización correcta" || echo "Actualización fallida"
 
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 -y
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 echo "deb http://cran.r-project.org/bin/linux/ubuntu trusty/" >>  /etc/apt/sources.list
 echo "updating"
