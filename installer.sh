@@ -15,20 +15,20 @@ clear
 tempdir=$(mktemp -d)
 
 
-apt-get install ttf-mscorefonts-installer -y 
-apt-get install ubuntu-restricted-addons -y 
-apt-get install gstreamer0.10-plugins-bad-multiverse -y 
-apt-get install libavcodec-extra-53 -y 
-apt-get install unrar gnome-icon-theme-full -y
+apt-get -y install ttf-mscorefonts-installer
+apt-get -y install ubuntu-restricted-addons
+apt-get -y install gstreamer0.10-plugins-bad-multiverse
+apt-get -y install libavcodec-extra-53
+apt-get -y install unrar gnome-icon-theme-full
 
-add-apt-repository ppa:yorba/ppa -y 
-add-apt-repository ppa:smathot/cogscinl -y 
-add-apt-repository ppa:gottcode/gcppa -y 
-add-apt-repository ppa:webupd8team/sublime-text-2 -y 
+add-apt-repository -y  ppa:yorba/ppa
+add-apt-repository -y  ppa:smathot/cogscinl
+add-apt-repository -y  ppa:gottcode/gcppa
+add-apt-repository -y  ppa:webupd8team/sublime-text-2
 echo "Updating"
 apt-get update &> /dev/null
 
-apt-get install sublime-text focuswriter opensesame vlc libreoffice firefox texlive -y || echo "Writers and Firefox not installed"
+apt-get -y install sublime-text focuswriter opensesame vlc libreoffice firefox texlive || echo "Writers and Firefox not installed"
 apt-get -y build-dep libcurl4-gnutls-dev
 apt-get -y install libcurl4-gnutls-dev
 
