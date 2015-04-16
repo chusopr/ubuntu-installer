@@ -34,14 +34,14 @@ apt-get -y install libcurl4-gnutls-dev
 
 
 
-apt-get upgrade && echo "Actualización correcta" || echo "Actualización fallida"
+apt-get -y upgrade && echo "Actualización correcta" || echo "Actualización fallida"
 
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 echo "deb http://cran.r-project.org/bin/linux/ubuntu trusty/" >>  /etc/apt/sources.list
 echo "updating"
 apt-get update &> /dev/null
-apt-get install r-base
+apt-get -y install r-base
 
 
 cat << EOF > $tempdir/sc.R
@@ -72,4 +72,4 @@ rm -fr $tempdir
 
 
 
-apt-get upgrade || echo "Upgrade failed" && echo "Upgrade OK"
+apt-get -y upgrade || echo "Upgrade failed" && echo "Upgrade OK"
